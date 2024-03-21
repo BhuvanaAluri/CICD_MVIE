@@ -26,10 +26,10 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Initialize
-        run: terraform init
+        run: terraform -chdir="./setup/terraform/" init
 
       - name: Terraform Validate
-        run: terraform validate 
+        run: terraform -chdir="./setup/terraform/" validate 
       
       - name: working dir
         run: pwd
@@ -40,4 +40,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply "./setup/terraform/" -auto-approve
+        run: terraform apply -chdir="./setup/terraform/" -auto-approve
