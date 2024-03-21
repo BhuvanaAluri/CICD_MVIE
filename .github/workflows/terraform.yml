@@ -30,7 +30,10 @@ jobs:
 
       - name: Terraform Validate
         run: terraform validate 
-
+      
+      - name: working dir
+        run: pwd
+        
       - name: Terraform Plan
         run: terraform plan 
         continue-on-error: true
