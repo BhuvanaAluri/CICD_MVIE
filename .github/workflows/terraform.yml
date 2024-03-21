@@ -33,13 +33,5 @@ jobs:
       - name: working dir
         run: pwd
         
-      - name: Terraform Plan
-        run: terraform -chdir="./setup/terraform/" plan 
-        continue-on-error: true
-
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform -chdir="./setup/terraform/" apply -auto-approve
-
-      - name: Terraform output
-        run: terraform -chdir="./setup/terraform/" output
+      - name: Terraform destroy
+        run: terraform -chdir="./setup/terraform/" destroy
