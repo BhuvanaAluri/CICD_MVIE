@@ -19,7 +19,6 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{secrets.AWS_SESSION_TOKEN}}
           aws-region: us-east-1
 
       - name: Setup Terraform
@@ -41,3 +40,6 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform -chdir="./setup/terraform/" apply -auto-approve
+
+      - name: Terraform output
+        run: terraform -chdir="./setup/terraform/" output
