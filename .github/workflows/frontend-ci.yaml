@@ -1,0 +1,49 @@
+name: frontend
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  LINT_JOB:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Use Node.js 
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{env.NODE_VERSION}}
+        cache: 'npm'
+    - name: Init Cache Default
+      uses: nmerget/npm-cache-action@v1
+      
+    - name: Install dependencies
+      run:  npm ci
+
+    - name: Run Lint 
+      run: npm run lint
+ 
+  TEST_JOB: 
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Use Node.js 
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{env.NODE_VERSION}}
+        cache: 'npm'
+    - name: Init Cache Default
+      uses: nmerget/npm-cache-action@v1
+      
+    - name: Install dependencies
+      run:  npm ci
+
+    - name: Run Lint 
+      run: npm run test
