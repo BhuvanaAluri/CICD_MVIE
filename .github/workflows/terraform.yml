@@ -19,13 +19,9 @@ jobs:
           aws-region: us-east-1
       
       - name: working dir
-        run: pwd
+        working-directory: ./setup
 
-      - name: listing
-        run: ls -lrth  
+      - name: list
+        run: ls-lrth
 
-      - name: change dir
-        run: cd ./setup
 
-      - name: list files
-        run: ls -lrth  
