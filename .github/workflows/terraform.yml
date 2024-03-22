@@ -51,7 +51,7 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform -chdir="./setup/terraform/" apply tfplan -auto-approve
+        run: terraform -chdir="./setup/terraform/" apply tfplan
 
       - name: Terraform output
         run: terraform -chdir="./setup/terraform/" output
