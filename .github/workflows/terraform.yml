@@ -46,7 +46,7 @@ jobs:
         run: pwd
         
       - name: Terraform Plan
-        run: terraform -chdir="./setup/terraform/" plan 
+        run: terraform -chdir="./setup/terraform/" plan -out tfplan
         continue-on-error: true
 
       - name: Terraform Apply
