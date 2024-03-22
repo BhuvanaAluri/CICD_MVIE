@@ -92,7 +92,7 @@ jobs:
     - name: Build Docker Image
       run: |
           echo Building the Docker image...          
-          docker build -t latest  
+          docker build -f './starter/frontend/Dockerfile'
          
       
   
