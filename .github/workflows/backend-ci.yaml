@@ -83,7 +83,7 @@ jobs:
     defaults:  
      run:
       shell: bash
-      working-directory: ./starter/frontend
+      working-directory: /starter/frontend
       
     steps:
        - name: List
