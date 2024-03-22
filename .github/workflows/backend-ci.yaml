@@ -83,12 +83,13 @@ jobs:
     defaults:  
      run:
       shell: bash
-      working-directory: starter/frontend/Dockerfile
+      
     steps:
-       - name: Docker Build 
+       - name: list
          run: |
-          - echo Building the Docker image...          
-          - docker build -t latest
+              pwd
+              ls -lrth
+       
          
       
   
