@@ -21,8 +21,11 @@ jobs:
       - name: working dir
         run: pwd
 
-      - name: change dir
-        run: cd "./setup"
-
       - name: listing
         run: ls -lrth  
+
+      - name: change dir
+        run: cd setup
+
+      - name: kube
+        run: sh init.sh
