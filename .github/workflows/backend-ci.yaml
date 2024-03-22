@@ -83,22 +83,10 @@ jobs:
     defaults:  
      run:
       shell: bash
-      working-directory: /starter/frontend
       
     steps:
        - name: List
          run: ls -lrth
          
-       - name: Login to Amazon ECR
-         id: login-ecr
-         run: |
-          - echo Logging into ECR
-          - aws ecr get-login-password --region ${{ secrets.AWS_DEFAULT_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_DEFAULT_REGION }}.amazonaws.com
-         
-       - name: Docker Build 
-         run: |
-          - echo Building the Docker image...          
-          - docker build -t ${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IAMGE_TAG }} .
-          - docker tag ${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IAMGE_TAG }} ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_DEFAULT_REGION }}.amazonaws.com/${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IAMGE_TAG }}
-          
+      
   
