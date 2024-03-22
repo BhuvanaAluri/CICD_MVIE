@@ -83,7 +83,7 @@ jobs:
     defaults:  
      run:
       shell: bash
-      working-directory: ./starter/backend/
+      working-directory: starter/backend/
     steps:
        - name: Login to Amazon ECR
          id: login-ecr
