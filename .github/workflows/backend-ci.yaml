@@ -83,7 +83,6 @@ jobs:
     defaults:  
      run:
       shell: bash
-      working-directory: ./starter/frontend/
     
     steps:
     - name: Check out repository
