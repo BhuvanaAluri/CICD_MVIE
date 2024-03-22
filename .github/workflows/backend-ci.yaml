@@ -89,10 +89,15 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v4
 
+    - name: list
+      run: |
+          pwd
+          ls -lrth
+
     - name: Build Docker Image
       run: |
           echo Building the Docker image...          
-          docker build -f "./Dockerfile" -t image:latest
+          docker build "./starter/frontend" -f "./Dockerfile" -t image:latest
          
       
   
