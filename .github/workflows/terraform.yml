@@ -25,7 +25,7 @@ jobs:
         run: ls -lrth  
 
       - name: change dir
-        run: cd setup
+        run: cd ./setup
 
       - name: list files
         run: ls -lrth  
