@@ -20,7 +20,7 @@ jobs:
       
       - name: working dir
         working-directory: ./setup
-        run: ls -lrth
+        run: ./init.sh
       
        
 
