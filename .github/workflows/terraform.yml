@@ -46,12 +46,12 @@ jobs:
         run: pwd
         
       - name: Terraform Plan
-        run: terraform -chdir="./setup/terraform/" plan 
+        run: terraform -chdir="./setup/terraform/" plan -out tfplan
         continue-on-error: true
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform -chdir="./setup/terraform/" apply -auto-approve
+        run: terraform -chdir="./setup/terraform/" apply tfplan -auto-approve
 
       - name: Terraform output
         run: terraform -chdir="./setup/terraform/" output
