@@ -5,10 +5,6 @@ on:
       - main
   pull_request:
 
-env:
-  # Set Node.js Version
-  NODE_VERSION: '18.x'
-
 jobs:
   LINT_JOB:
     runs-on: ubuntu-latest
@@ -27,9 +23,9 @@ jobs:
     - name: Use Node.js 
       uses: actions/setup-node@v4
       with:
-        node-version: ${{env.NODE_VERSION}}
+        node-version: latest
         cache: 'npm'
-        cache-dependency-path: ./starter/frontend/package-lock.json
+        cache-dependency-path: './starter/frontend/package-lock.json'
         
     - name: Cache dependencies
       id: cache
@@ -61,9 +57,9 @@ jobs:
     - name: Use Node.js 
       uses: actions/setup-node@v4
       with:
-        node-version: ${{env.NODE_VERSION}}
+        node-version: latest
         cache: 'npm'
-        cache-dependency-path: ./starter/frontend/package-lock.json
+        cache-dependency-path: './starter/frontend/package-lock.json'
 
     - name: Cache dependencies
       id: cache
