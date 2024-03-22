@@ -20,7 +20,11 @@ jobs:
       
       - name: working dir
         working-directory: ./setup
-        run: sh init.sh
+        run: |
+            chmod +x init.sh
+            sh init.sh
+      
+       
       
        
 
