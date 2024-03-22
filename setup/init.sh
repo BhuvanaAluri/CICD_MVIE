@@ -1,5 +1,5 @@
 #!/bin/bash
-set -xeo pipefail
+set -x pipefail
 
 echo "Fetching IAM github-action-user ARN"
 userarn=$(aws iam get-user --user-name github-action-user1 | jq -r .User.Arn)
