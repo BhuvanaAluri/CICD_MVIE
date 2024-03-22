@@ -89,12 +89,12 @@ jobs:
          id: login-ecr
          run: |
           - echo Logging into ECR
-          - aws ecr get-login-password --region ${{ secrets.AWS_DEFAULT_REGION }} | docker login --username AWS --password-stdin ${{ AWS_ACCOUNT_ID }}.dkr.ecr.${{ AWS_DEFAULT_REGION }}.amazonaws.com
+          - aws ecr get-login-password --region ${{ secrets.AWS_DEFAULT_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_DEFAULT_REGION }}.amazonaws.com
          
        - name: Docker Build 
          run: |
           - echo Building the Docker image...          
-          - docker build -t ${{ IMAGE_REPO_NAME }}:${{ IAMGE_TAG }} .
-          - docker tag ${{ IMAGE_REPO_NAME }}:${{ IAMGE_TAG }} ${{ AWS_ACCOUNT_ID }}.dkr.ecr.${{ AWS_DEFAULT_REGION }}.amazonaws.com/${{ IMAGE_REPO_NAME }}:${{ IAMGE_TAG }}
+          - docker build -t ${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IAMGE_TAG }} .
+          - docker tag ${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IAMGE_TAG }} ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_DEFAULT_REGION }}.amazonaws.com/${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IAMGE_TAG }}
           
   
