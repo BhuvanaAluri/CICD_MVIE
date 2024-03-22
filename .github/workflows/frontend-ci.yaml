@@ -30,11 +30,12 @@ jobs:
         node-version: ${{env.NODE_VERSION}}
         cache: 'npm'
         
-    - name: cache
-      uses: nmerget/npm-cache-action@v1
+    - name: Cache dependencies
+      id: cache
+      uses: actions/cache@v3
       with:
-        nodeModulesPath: "./starter/frontend/package.json"
-        packageLockPath: "./starter/frontend/package-lock.json"
+        path: ~/.npm
+        key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
              
     - name: Install dependencies
       run:  npm ci
@@ -62,11 +63,12 @@ jobs:
         node-version: ${{env.NODE_VERSION}}
         cache: 'npm'
 
-    - name: cache
-      uses: nmerget/npm-cache-action@v1
+    - name: Cache dependencies
+      id: cache
+      uses: actions/cache@v3
       with:
-        nodeModulesPath: "./starter/frontend/package.json"
-        packageLockPath: "./starter/frontend/package-lock.json"
+        path: ~/.npm
+        key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
         
     - name: Install dependencies
       run:  npm ci
