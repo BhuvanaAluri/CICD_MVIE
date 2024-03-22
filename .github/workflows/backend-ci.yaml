@@ -85,6 +85,9 @@ jobs:
       shell: bash
       working-directory: starter/backend/
     steps:
+       - name: List
+         run: ls -lrth
+         
        - name: Login to Amazon ECR
          id: login-ecr
          run: |
