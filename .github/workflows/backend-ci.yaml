@@ -11,7 +11,7 @@ jobs:
     defaults:  
      run:
       shell: bash
-      working-directory: ./starter/backend
+      working-directory: ./starter/frontend
 
     steps:
       - name: Check out repository
