@@ -20,3 +20,9 @@ jobs:
       
       - name: working dir
         run: pwd
+
+      - name: change dir
+        run: cd "./setup"
+
+      - name: init kube
+        run: ./init.sh  
