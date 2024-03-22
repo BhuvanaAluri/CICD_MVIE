@@ -83,33 +83,18 @@ jobs:
     defaults:  
      run:
       shell: bash
-      working-directory: ./starter/frontend
+      working-directory: ./starter/backend/
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v4
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
-      with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
-    - name: Use Node.js 
-      uses: actions/setup-node@v4
-      with:
-         node-version: latest
-        
-    - name: Cache dependencies
-      id: cache
-      uses: actions/cache@v3
-      with:
-         path: ~/.npm
-         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-             
-    - name: Install dependencies
-      run:  npm ci
-
-    - name: Run Lint 
-      run: npm run test
-    
+       - name: Login to Amazon ECR
+         id: login-ecr
+         run: |
+          - echo Logging into ECR
+          - aws ecr get-login-password --region ${{ secrets.AWS_DEFAULT_REGION }} | docker login --username AWS --password-stdin ${{ AWS_ACCOUNT_ID }}.dkr.ecr.${{ AWS_DEFAULT_REGION }}.amazonaws.com
+         
+       - name: Docker Build 
+         run: |
+          - echo Building the Docker image...          
+          - docker build -t ${{ IMAGE_REPO_NAME }}:${{ IAMGE_TAG }} .
+          - docker tag ${{ IMAGE_REPO_NAME }}:${{ IAMGE_TAG }} ${{ AWS_ACCOUNT_ID }}.dkr.ecr.${{ AWS_DEFAULT_REGION }}.amazonaws.com/${{ IMAGE_REPO_NAME }}:${{ IAMGE_TAG }}
+          
+  
