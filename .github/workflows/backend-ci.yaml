@@ -83,7 +83,7 @@ jobs:
     defaults:  
      run:
       shell: bash
-      
+      working-directory: pwd
     steps:
        - name: List
          run: ls -lrth
