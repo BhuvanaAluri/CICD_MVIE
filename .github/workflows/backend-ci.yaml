@@ -83,6 +83,7 @@ jobs:
     defaults:  
      run:
       shell: bash
+      working-directory: ./starter/frontend
     
     steps:
     - name: Check out repository
@@ -96,7 +97,7 @@ jobs:
     - name: Build Docker Image
       run: |
           echo Building the Docker image...          
-          docker build "./starter/frontend" -f "./Dockerfile" -t image:latest
+          docker build -t build-image .
          
       
   
