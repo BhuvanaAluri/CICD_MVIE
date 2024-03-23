@@ -60,8 +60,8 @@ jobs:
        
      - name: Run tests
        run: |
-           pip install flask
-           python test_app.py     
+           pipenv install --dev
+           pipenv run test_app.py     
           
   BUILD_JOB: 
     runs-on: ubuntu-latest
