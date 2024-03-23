@@ -1,4 +1,4 @@
-name: frondtend-cd
+name: frontend-cd
 on:
   push:
     branches:
