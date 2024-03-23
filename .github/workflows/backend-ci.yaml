@@ -61,8 +61,8 @@ jobs:
      - name: Run tests
        run: |
           pipenv install --dev
-          echo $PATH
-          pipenv run ../test_app.py     
+          export PATH=$PATH:/starter/backend
+          pipenv run test_app.py     
           
   BUILD_JOB: 
     runs-on: ubuntu-latest
