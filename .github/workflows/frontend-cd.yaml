@@ -106,8 +106,11 @@ jobs:
     - name: Build, tag, and push docker image to Amazon ECR Public
       env:
           REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
+          REGISTRY_ALIAS: frontend-registry-alias
+          REPOSITORY: frontend
+          IMAGE_TAG: latest
           
       run: |
           docker build --build-arg=REACT_APP_MOVIE_API_URL=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/${{ secrets.IMAGE_REPO_NAME }} -t mp-frontend .
-          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_DEFAULT_REGION }}.amazonaws.com/${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IMAGE_TAG }}
+          docker push $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
     
