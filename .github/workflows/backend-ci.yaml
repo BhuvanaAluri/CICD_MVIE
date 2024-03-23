@@ -63,6 +63,7 @@ jobs:
            pipenv install --dev
            pip install pytest
            pip install flask 
+           pip install flask_cors
            pytest test_app.py     
           
   BUILD_JOB: 
