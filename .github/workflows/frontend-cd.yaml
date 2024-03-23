@@ -109,7 +109,7 @@ jobs:
       env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: frontend
-          IMAGE_TAG: latest
+          IMAGE_TAG: mp-frontend
           
       run: |
           docker build --build-arg=REACT_APP_MOVIE_API_URL=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/${{ secrets.IMAGE_REPO_NAME }} -t mp-frontend .
