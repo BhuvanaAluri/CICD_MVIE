@@ -61,7 +61,7 @@ jobs:
      - name: Run tests
        run: |
           pipenv install --dev
-          export PATH=$PATH:/starter/backend
+          pipenv shell
           pipenv run test_app.py     
           
   BUILD_JOB: 
