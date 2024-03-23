@@ -1,7 +1,7 @@
 # from . import app
 from . import movies
 import os
-import Flask
+from flask import Flask
 
 
 def test_movies_endpoint_returns_200():
