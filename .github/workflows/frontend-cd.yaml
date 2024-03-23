@@ -113,6 +113,8 @@ jobs:
           
       run: |
           docker build --build-arg=REACT_APP_MOVIE_API_URL=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/${{ secrets.IMAGE_REPO_NAME }} -t mp-frontend .
+          echo $REACT_APP_MOVIE_API_URL
+          echo ${{ secrets.IMAGE_REPO_NAME }}
           docker push "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG"
           echo "IMAGE $IMAGE_TAG is pushed to $ECR_REGISTRY/$ECR_REPOSITORY"
           echo "image_tag=$IMAGE_TAG" 
