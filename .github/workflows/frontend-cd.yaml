@@ -101,7 +101,7 @@ jobs:
         access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         region: ${{ secrets.AWS_DEFAULT_REGION }}
-     
+            
 
     - name: Build, tag, and push docker image to Amazon ECR Public
       id: build-publish
@@ -113,8 +113,7 @@ jobs:
           
       run: |
           docker build --build-arg=REACT_APP_MOVIE_API_URL=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/${{ secrets.IMAGE_REPO_NAME }} -t mp-frontend .
-          echo $REACT_APP_MOVIE_API_URL
-          echo ${{ secrets.IMAGE_REPO_NAME }}
+          docker tag {{ secrets.IMAGE_REPO_NAME }}:$IAMGE_TAG ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/{{ secrets.IMAGE_REPO_NAME }}:$IAMGE_TAG
           docker push "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG"
           echo "IMAGE $IMAGE_TAG is pushed to $ECR_REGISTRY/$ECR_REPOSITORY"
           echo "image_tag=$IMAGE_TAG" 
