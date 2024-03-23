@@ -60,6 +60,7 @@ jobs:
        
      - name: Run tests
        run: |
+          pwd
           pipenv install --dev
           pipenv run test_app.py     
           
