@@ -14,13 +14,17 @@ def test_movies_endpoint_returns_200():
 
 
 def test_movies_endpoint_returns_json():
-    with movies.test_client() as client:
+    app = Flask(__name__)
+    app.register_blueprint(movies.movies_api, url_prefix="/")
+    with app.test_client() as client:
         response = client.get("/movies/")
         assert response.content_type == "application/json"
 
 
 def test_movies_endpoint_returns_valid_data():
-    with movies.test_client() as client:
+    app = Flask(__name__)
+    app.register_blueprint(movies.movies_api, url_prefix="/")
+    with app.test_client() as client:
         response = client.get("/movies/")
         data = response.get_json()
         assert isinstance(data, dict)
