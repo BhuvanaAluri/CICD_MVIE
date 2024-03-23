@@ -1,4 +1,5 @@
-from . import app
+#from . import app
+from movies import movies_api
 import os
 
 
