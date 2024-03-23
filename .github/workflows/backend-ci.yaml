@@ -60,8 +60,7 @@ jobs:
        
      - name: Run tests
        run: |
-          pipenv install --dev
-          pipenv shell run test_app.py     
+           python test_app.py     
           
   BUILD_JOB: 
     runs-on: ubuntu-latest
