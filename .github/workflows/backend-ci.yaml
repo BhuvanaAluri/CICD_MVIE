@@ -33,13 +33,13 @@ jobs:
         uses: py-actions/flake8@v2
 
   TEST_JOB: 
-  runs-on: ubuntu-latest
-  defaults:  
+   runs-on: ubuntu-latest
+   defaults:  
      run:
       shell: bash
       working-directory: ./starter/frontend
       
-     steps:
+   steps:
      - name: Check out source repository
        uses: actions/checkout@v3
 
