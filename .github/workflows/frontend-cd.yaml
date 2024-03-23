@@ -119,6 +119,8 @@ jobs:
      - name: Deploy to EKS
        run: |
             cd "./k8s/"
-            kubectl apply -k .
-            kubectl apply -f .
+            kustomize edit set image frontend=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+            kustomize build | kubectl apply -f -
+            kubectl get svc
+            kubectl get pods 
  
