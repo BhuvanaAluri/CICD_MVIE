@@ -61,7 +61,7 @@ jobs:
      - name: Run tests
        run: |
           pipenv install --dev
-          pwd
+          echo $PATH
           pipenv run ../test_app.py     
           
   BUILD_JOB: 
