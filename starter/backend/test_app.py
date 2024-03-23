@@ -1,5 +1,5 @@
 # from . import app
-from movies import movies_api
+from . import movies
 import os
 
 
